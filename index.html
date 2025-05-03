@@ -1,0 +1,180 @@
+<!DOCTYPE html> 
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mis XV Años Nat</title>
+
+  <!-- Fuentes -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    body {
+      font-family: 'Playfair Display', serif;
+      background-image: url('https://media.istockphoto.com/id/1292341024/es/foto/desenfoque-abstracto-hermoso-color-oro-rosa-color-metalizado-fondo-brillante-para-festival-de.jpg?s=612x612&w=0&k=20&c=sZYAv973fNNkyO7jQ4XsMEKVdAw6DYmdKTfkQp8WMmM=');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: #333;
+      text-align: center;
+      padding: 20px;
+      font-size: 1.2em;
+      line-height: 1.6;
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+      z-index: 1;
+    }
+
+    h1 {
+      font-family: 'Dancing Script', cursive;
+      color: #f15b8d;
+      font-size: 4em;
+      margin-bottom: 0.2em;
+    }
+
+    .details, .location, .countdown, .rsvp {
+      margin: 20px 0;
+      padding: 0 10px;
+    }
+
+    .glitter {
+      position: fixed;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: twinkle 2s ease-in-out infinite, fall 12s linear infinite;
+      pointer-events: none;
+      z-index: -1; /* para que quede detrás del contenido */
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-10vh) translateX(0) rotate(0deg) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(120vh) translateX(50px) rotate(360deg) scale(0.8);
+        opacity: 1;
+      }
+    }
+
+    @keyframes twinkle {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 0.9;
+      }
+      50% {
+        transform: scale(1.5);
+        opacity: 1;
+      }
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 0.9em;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Mis XV Años Nat</h1>
+  <p>Los momentos más esperados se sueñan, se imaginan, se construyen y hoy, que el día ha llegado, lo más importante es que estés a mi lado.</p>
+  
+  <div class="details">
+    <p>Te invito a Mis XV años Nat</p>
+    <p><strong>Fecha:</strong> 28 . Diciembre . 2025</p>
+    <p><strong>Mis Papás:</strong> Carlos Martínez, Elena Álvarez</p>
+  </div>
+
+  <div class="countdown">
+    <p>¡Para el gran día faltan!</p>
+    <p id="timer">Días: 0 | Horas: 0 | Minutos: 0 | Segundos: 0</p>
+  </div>
+
+  <div class="location">
+    <p><strong>¿Dónde?</strong></p>
+    <p>Ceremonia Religiosa</p>
+    <p>Parroquia de San Ignacio de Loyola</p>
+    <p>Hora: 02:00 p.m.</p>
+    <p>Dirección: Cuauhtémoc #1, Centro, C.P. 81700, Ejido del Centro, Sinaloa</p>
+    <p>Recepción</p>
+    <p>Luxemburgo Salón Jardín</p>
+    <p>Hora: 08:00 p.m.</p>
+    <p>Dirección: Carretera Federal Km 15.13, La Presita, C.P. 80059, Culiacán Rosales, Sin.</p>
+  </div>
+
+  <div class="rsvp">
+    <p><strong>Código de Vestimenta:</strong> Etiqueta</p>
+    <p>Confirmación de Asistencia</p>
+    <p>CONFIRMA TU ASISTENCIA enviando un mensaje</p>
+    <p>¿ASISTIRÉ? Sí / No</p>
+  </div>
+
+  <footer>
+    <p>¿TE GUSTÓ LA INVITACIÓN? MÁS INFO COMPRAR INVITACIÓN MX</p>
+  </footer>
+
+  <!-- Cuenta regresiva -->
+  <script>
+    const targetDate = new Date("May 30, 2025 00:00:00").getTime();
+
+    const countdownFunction = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance <= 0) {
+        clearInterval(countdownFunction);
+        document.getElementById("timer").innerHTML = "¡Hoy es el gran día!";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("timer").innerHTML =
+        `Días: ${days} | Horas: ${hours} | Minutos: ${minutes} | Segundos: ${seconds}`;
+    }, 1000);
+  </script>
+
+  <!-- Efecto de brillos dorados -->
+  <script>
+    function createGlitter() {
+      const glitter = document.createElement('div');
+      glitter.classList.add('glitter');
+
+      const size = Math.random() * 20 + 30;
+      glitter.style.width = size + 'px';
+      glitter.style.height = size + 'px';
+      glitter.style.left = Math.random() * (window.innerWidth - size) + 'px';
+      glitter.style.top = '-50px';
+
+      // Solo color dorado
+      glitter.style.background = 'radial-gradient(circle, rgba(255, 215, 0, 1) 0%, rgba(255, 215, 0, 0.7) 40%, rgba(255, 215, 0, 0) 70%)';
+
+      document.body.appendChild(glitter);
+
+      setTimeout(() => {
+        glitter.remove();
+      }, 12000);
+    }
+
+    setInterval(createGlitter, 40);
+  </script>
+
+</body>
+</html>
